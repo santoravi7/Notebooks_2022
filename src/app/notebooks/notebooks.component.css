@@ -1,6 +1,6 @@
-.lnbnav{
+/* .lnbnav{
   margin-top:5%;
-}
+} */
 
 .add-nb{
     margin-top: 30px;
@@ -22,6 +22,7 @@
   overflow-x: hidden;
   height: 100vh;
   width:100%;
+  background: #f9f9f9;
 }
 .nb-header{
   font-family: lato;
@@ -64,6 +65,10 @@
   padding:15px 5px;
   margin: 0px 10px; 
   display:inline-block;
+}
+
+.notebook-div a{
+  cursor: pointer;
 }
 
 #container {
@@ -271,9 +276,6 @@
     left: 0px;
   }
 
-  .lnbnav{
-    margin-top:15%;
-  }
   .settings-tab .set-bg {
     width: 120px;
     display: inline-block;

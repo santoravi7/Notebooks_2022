@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotebookData } from '../notebook-data';
 import { NotebooksService } from '../notebooks.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-notebooks',
@@ -15,18 +14,17 @@ export class NotebooksComponent implements OnInit {
   colorRandomVal;
   colorVal; noteLen; img;
   public show: boolean = false;
-  modalRef: BsModalRef;
+  // modalRef: BsModalRef;
 
-  constructor(private notebookService: NotebooksService,
-  private modalService: BsModalService, private router:Router,
+  constructor(private notebookService: NotebooksService, private router:Router,
   private route:ActivatedRoute) { }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {
-      animated: true,
-      backdrop: 'static'
-    });
-  }
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template, {
+  //     animated: true,
+  //     backdrop: 'static'
+  //   });
+  // }
 
   toggle(notebookId:number) {
     if(this.clickIdx===notebookId)
@@ -53,13 +51,13 @@ export class NotebooksComponent implements OnInit {
     this.router.navigate([notebook.id], {relativeTo:this.route});
   }
 
-  addNotebook(name: string, noteList: any[], todoList: any[], img: string,created: Date): void {
+  addNotebook(name: string, noteList: any[], todoList: any[], img: string,): void {
     this.colorRandomVal = Math.floor(Math.random() * this.images.length); 
     this.noteLen = this.notebooks.length+1;
     name = "Notebook "+this.noteLen;
     img = this.images[this.colorRandomVal].value;
     noteList = [];todoList=[];
-    created = new Date();
+    let created = new Date();
     if(!created)
     created = new Date();
     if (!name) { return; }

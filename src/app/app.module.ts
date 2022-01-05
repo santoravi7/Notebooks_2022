@@ -6,14 +6,25 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotebooksService } from './notebooks.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ModalModule } from 'ngx-bootstrap';
+import { InMemoryDataService } from './in-memory-data.service';
+import { HttpClientModule } from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { CommonModule } from '@angular/common';
+// import { ModalModule } from 'ngx-bootstrap';
+
 
 @NgModule({
-  imports:      [ BrowserModule, 
+  imports:      [
+    CommonModule,
+    BrowserModule, 
     FormsModule, 
     AppRoutingModule,
     NgbModule,
-    ModalModule.forRoot() ],
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{
+      dataEncapsulation:false
+    }) 
+  ],
   declarations: [ AppComponent, NavbarComponent, routingComponents ],
   bootstrap:    [ AppComponent ],
   providers:[NotebooksService],

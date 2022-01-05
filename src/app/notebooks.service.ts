@@ -11,7 +11,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class NotebooksService {
   private notebooksUrl = "api/notebooks";
-  private notesUrl = "api/notes";
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -22,6 +21,7 @@ export class NotebooksService {
   }
 
   getNoteBook(id: number): Observable<NotebookData> {
+    console.log("This is get notebook in service");
     const url = `${this.notebooksUrl}/${id}`;
     return this.http.get<NotebookData>(url);
   }
